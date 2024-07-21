@@ -20,19 +20,19 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/cd-Crypton/custom_recovery_tree_realme_nashc'
+        default: 'https://github.com/cachiusa/orangefox_device_xiaomi_veux'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true
-        default: 'android-12.1'
+        default: 'staging'
       DEVICE_PATH:
         description: 'Specify your Device Path'
         required: true
-        default: 'device/realme/nashc'
+        default: 'device/xiaomi/veux'
       DEVICE_NAME:
         description: 'Specify your Device Codename'
         required: true
-        default: 'nashc'
+        default: 'veux'
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
@@ -100,7 +100,7 @@ jobs:
         export USE_CCACHE=1
         export CCACHE_EXEC=/usr/bin/ccache
         sed -i 's/return sandboxConfig\.working/return false/g' build/soong/ui/build/sandbox_linux.go
-        #sed -i 's/FOX_VENDOR_BOOT_RECOVERY\=1/FOX_VENDOR_BOOT_RECOVERY\=0/g' device/xiaomi/veux/vendorsetup.sh
+        export TW_VNDR_BOOT=0
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
